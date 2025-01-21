@@ -1,5 +1,10 @@
 pandas~=2.2.3
 google-genai
+google-generativeai
 protobuf~=5.29.2
 scikit-learn~=1.6.0
 matplotlib
+tqdm
+deepeval
+instructor
+ollama
