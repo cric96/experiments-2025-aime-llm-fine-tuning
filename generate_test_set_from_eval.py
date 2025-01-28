@@ -1,17 +1,7 @@
-import argparse
+import json
 
 import numpy as np
-import os
 import pandas as pd
-import seaborn as sns
-from deepeval import evaluate
-from deepeval.metrics import GEval
-from deepeval.test_case import LLMTestCase, LLMTestCaseParams
-from matplotlib import pyplot as plt, cm
-from sklearn.decomposition import PCA
-import json
-from adapter import CustomGeminiFlash
-from core import GeminiService
 
 if __name__ == "__main__":
     # load all_models
