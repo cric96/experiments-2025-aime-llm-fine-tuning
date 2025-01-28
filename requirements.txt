@@ -8,3 +8,4 @@ tqdm
 deepeval
 instructor
 ollama
+seaborn

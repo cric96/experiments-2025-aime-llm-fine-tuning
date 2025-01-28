@@ -5,7 +5,7 @@ from google import generativeai as genai
 class CustomGeminiFlash(DeepEvalBaseLLM):
     def __init__(self, api_key, *args, **kwargs):
         genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel(model_name="models/gemini-1.5-pro")
+        self.model = genai.GenerativeModel(model_name="models/gemini-1.5-flash")
 
     def load_model(self):
         return self.model

@@ -1,5 +1,6 @@
 from abc import ABC
 from google import genai
+from google import generativeai as old_genai
 import ollama
 class LangaugeModelService(ABC):
     def embed_content(self, model: str, content: list[str]) -> list[list[float]]:
@@ -47,3 +48,31 @@ class GeminiService(LangaugeModelService):
             model=model,
             contents=content,
         ).text
+
+class GeminiOldService(LangaugeModelService):
+    def __init__(self, api_key):
+        old_genai.configure(api_key=api_key)
+
+
+    def generate_content(self, model: str, content: str) -> str:
+        # Create the model
+        generation_config = {
+            "temperature": 1,
+            "top_p": 0.95,
+            "top_k": 40,
+            "max_output_tokens": 8192,
+            "response_mime_type": "text/plain",
+        }
+
+        model = old_genai.GenerativeModel(
+            model_name="tunedModels/generated-b4ba5xhxlhk0",
+            generation_config=generation_config,
+        )
+
+        chat_session = model.start_chat(
+            history=[]
+        )
+
+        response = chat_session.send_message(content)
+
+        return response.text
